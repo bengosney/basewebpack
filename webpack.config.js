@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 
 module.exports = {
     mode: 'development',
@@ -15,9 +16,12 @@ module.exports = {
     plugins: [
 	new CleanWebpackPlugin(),
 	new HtmlWebpackPlugin({
-	    title: 'Output Management',
+	    title: 'Webpack App',
 	}),
-	new MiniCssExtractPlugin()
+	new MiniCssExtractPlugin(),
+	new WebpackBuildNotifierPlugin({
+	    suppressSuccess: true
+	})
     ],
     output: {
 	filename: '[name].bundle.js',
